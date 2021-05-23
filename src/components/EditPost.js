@@ -83,7 +83,7 @@ function ourReducer(draft,action){
                 if(response.data){
                 dispatch({type:'fetchComplete',value:response.data});
                 if(appState.user.username != response.data.author.username){
-                    appDispatch({type:'flashMessages',value:`you don't have permission to edit this post 😒`});
+                    appDispatch({ type: "flashMessages", template:"danger", value: "You do not have permission to edit that post.😒" })
                     //redirect 
                     props.history.push('/');
                 }

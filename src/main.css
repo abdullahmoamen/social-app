@@ -32,12 +32,16 @@ body {
 }
 
 .avatar-small {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
   border-radius: 16px;
   margin-right: 5px;
   position: relative;
   top: -3px;
+}
+.fa-users{
+  margin-left:10px;
+  color: #28a745;
 }
 
 .avatar-tiny {
@@ -443,14 +447,22 @@ textarea.tall-textarea {
 }
 
 .chat-field {
-  width: 100%;
+  width: 70%;
   box-sizing: border-box;
   padding: 10px 7px;
   border: none;
   outline: none;
   font-size: 0.75rem;
 }
-
+.chat-button{
+  cursor: pointer;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  float:right;
+  padding: 5px;
+  border-radius: 15px;
+}
 .floating-alert {
   display: none;
   position: absolute;

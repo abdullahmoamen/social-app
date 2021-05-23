@@ -53,7 +53,7 @@ function Index() {
         break;
 
       case 'flashMessages':
-        draft.flashMessages.push(action.value);
+        draft.flashMessages.push({message:action.value, template:action.template})
         break;
 
       case 'openSearch':
@@ -108,7 +108,7 @@ function Index() {
           const response =await Axios.post('/checkToken',{token:state.user.token},{cancelToken:ourReq.token});
           if(!response.data){
             dispatch({type:'logout'});
-            dispatch({type:'flashMessages',value:'Your session was expired!. Please Login again. 💻'})
+            dispatch({ type: "flashMessages", template: "danger", value: "Your session has expired. Please log in again.💻" })
           }
         } catch (error) {
           console.log('error !')
@@ -129,7 +129,8 @@ function Index() {
       <Suspense fallback={<Loader/>}>
       <Switch>
 
-        <Route path="/profile/:username">
+
+        <Route Route path="/profile/:username">
           <Profile/>
         </Route>
 

@@ -19,7 +19,7 @@ function Footer() {
       <p className="m-0">
         Copyright &copy; 2021{" "}
         <Link to="/" className="text-muted" >
-          SocialApp
+          SocialApp <i className="fas fa-users"/>
         </Link>
         . All rights reserved.
       </p>

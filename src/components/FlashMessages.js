@@ -1,15 +1,15 @@
-import React,{usEffect} from 'react'
+import React from 'react'
 
 function FlashMessages({msgs}) {
     return (
         <div className="floating-alerts">
             {msgs.map((msg,index)=>{
                 return (
-                    <div 
-                    key={index}
-                    className="alert alert-success text-center floating-alert shadow-sm">
-                        {msg} 
+                    
+                    <div key={index} className={"alert text-center floating-alert shadow-sm alert-" + ( Boolean(msg.template) ? msg.template : "success" ) }>
+                    {msg.message}
                     </div>
+                    
                 )
             })}
         </div>

@@ -13,7 +13,7 @@ const appState=useContext(StateContext)
       <div className="container d-flex flex-column flex-md-row align-items-center p-3">
         <h4 className="my-0 mr-md-auto font-weight-normal">
           <Link to="/" className="text-white">
-            SocialApp
+            SocialApp   <i className="fas fa-users"/>
           </Link>
         </h4>
         {appState.loggedIn ? <HeaderLogIn /> : <HeaderLogOut />}

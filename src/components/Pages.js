@@ -3,7 +3,7 @@ import Container from "./Container"
 
 function Pages(props) {
 useEffect(() => {
-    document.title = `${props.title} | SocialApp`
+    document.title = `${props.title} | SocialApp `
     window.scrollTo(0, 0)
 }, [props.title])
 

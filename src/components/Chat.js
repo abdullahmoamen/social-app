@@ -4,6 +4,7 @@ import DispatchContext from './../DispatchContext';
 import {useImmer} from 'use-immer';
 import io from 'socket.io-client';
 import {Link} from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 
 function Chat() {
     const socket =useRef(null);
@@ -51,10 +52,11 @@ function Chat() {
         e.preventDefault();
         // send messages to chat server
         socket.current.emit('chatFromBrowser',{message:state.fieldValue,token: appState.user.token,chat:appState.user.chat})
+        {state.fieldValue != '' && state.fieldValue !=' ' && state.fieldValue !='  '&&
         setState(draft=>{
             draft.chatMessages.push({message: draft.fieldValue,username:appState.user.username,avatar:appState.user.avatar,chat:appState.user.chat});
             draft.fieldValue = '';
-        })
+        })}
     }
     return (
         <div id="chat-wrapper" className={'chat-wrapper shadow border-top border-left border-right ' + (appState.isChatOpen ? 'chat-wrapper--is-visible':'')}>
@@ -100,7 +102,10 @@ function Chat() {
             required
             value={state.fieldValue} 
             onChange={handleFieldChange}
-            ref={inputRef} type="text" className="chat-field" id="chatField" placeholder="Type a message…" autoComplete="off" autoFocus/>
+            ref={inputRef} type="text" className="chat-field" id="chatField" 
+            placeholder="Type a message…" autoComplete="off" autoFocus/>
+            <button onClick={handleSubmit} className="chat-button btn-info" data-tip='Send' data-for='send'><i className="far fa-paper-plane"></i> </button>
+            <ReactTooltip id='send' className='custom-tooltip'/>
         </form>
     </div>
     )

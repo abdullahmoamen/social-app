@@ -17,7 +17,7 @@ function HeaderLogOut() {
                 appDispatch({type: 'login' , data: response.data});
                 appDispatch({type: 'flashMessages',value:'Successfully Logged In ❤️'}); 
             }else{
-                appDispatch({type: 'flashMessages',value:'Incorrect username || password 🙄'});
+                appDispatch({ type: "flashMessages", template: "danger", value: "Incorrect username / password.🙄" })
                 console.log('error!')
             }
         }catch(e){

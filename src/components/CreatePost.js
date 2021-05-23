@@ -16,8 +16,8 @@ function CreatePost(props) {
     try {
       const response = await Axios.post("/create-post", { title, body, token: appState.user.token })
       // Redirect to new post url
+      appDispatch({ type: "flashMessages", value: "Congrats, you created a new post.😉" })
       props.history.push(`/post/${response.data}`)
-      {props.history.push(`/post/${response.data}`)&&appDispatch({ type: "flashMessages", value: "Congrats, you created a new post.😉" })}
       console.log("New post was created.")
     } catch (e) {
       console.log("There was a problem.")
@@ -31,7 +31,7 @@ function CreatePost(props) {
           <label htmlFor="post-title" className="text-muted mb-1">
             <small>Title</small>
           </label>
-          <input required onChange={e => setTitle(e.target.value)} autoFocus name="title" id="post-title" className="form-control form-control-lg form-control-title" type="text" placeholder="" autoComplete="off" />
+          <input  onChange={e => setTitle(e.target.value)} autoFocus name="title" id="post-title" className="form-control form-control-lg form-control-title" type="text" placeholder="" autoComplete="off" />
         </div>
 
         <div className="form-group">
