@@ -19,9 +19,15 @@ function Footer() {
       <p className="m-0">
         Copyright &copy; 2021{" "}
         <Link to="/" className="text-muted" >
-          SocialApp <i className="fas fa-users"/>
+          SocialApp.<i className="fas fa-users"/>
         </Link>
-        . All rights reserved.
+        All rights reserved.
+        <a className='awesome' target="_blank" href='https://www.facebook.com/3bdullahmo2men/'>
+        Facebook <i className="fab fa-facebook"></i> 
+        </a>
+        <a className='awesome' target="_blank" href='https://www.linkedin.com/in/abdullah-moamen-b202701b4/'>
+        Linkedin <i className="fab fa-linkedin"></i> 
+        </a>
       </p>
     </footer>
   )

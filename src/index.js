@@ -15,23 +15,21 @@ import Terms from "./components/Terms";
 import Home from "./components/Home";
 const CreatePost =React.lazy(()=>import('./components/CreatePost'));
 const ViewSinglePost =React.lazy(()=>import('./components/ViewSinglePost'));
+const Search =React.lazy(()=>import('./components/Search'));
+const Chat =React.lazy(()=>import('./components/Chat'));
 import FlashMessages from './components/FlashMessages';
 import StateContext from "./StateContext";
 import DispatchContext from "./DispatchContext";
 import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
-const Search =React.lazy(()=>import('./components/Search'));
-const Chat =React.lazy(()=>import('./components/Chat'));
 import Loader from "./components/Loader";
 
 function Index() {
-
   const initialState={
     loggedIn:Boolean(localStorage.getItem('token')),
     flashMessages: [],
     user:{
-      chat:localStorage.getItem('chat'),
       token:localStorage.getItem('token'),
       username:localStorage.getItem('username'),
       avatar:localStorage.getItem('avatar'),
@@ -86,12 +84,10 @@ function Index() {
 
   useEffect(()=>{
     if(state.loggedIn){
-      localStorage.setItem('chat',state.user.chat);
       localStorage.setItem('token',state.user.token);
       localStorage.setItem('username',state.user.username);
       localStorage.setItem('avatar',state.user.avatar);
     }else{
-      localStorage.removeItem('chat');
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       localStorage.removeItem('avatar');
@@ -99,7 +95,6 @@ function Index() {
   },[state.loggedIn])
 
   // check token expired 
-
   useEffect(()=>{
     if(state.loggedIn){
       const ourReq=Axios.CancelToken.source();
@@ -127,9 +122,9 @@ function Index() {
       <FlashMessages msgs={state.flashMessages}/>
       <Header />
       <Suspense fallback={<Loader/>}>
+
       <Switch>
-
-
+        
         <Route Route path="/profile/:username">
           <Profile/>
         </Route>

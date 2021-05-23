@@ -1,5 +1,5 @@
 body {
-  font-family: "Public Sans", sans-serif;
+  font-family: "Public Sans", sans-serif !important;
 }
 
 .header-bar {
@@ -7,7 +7,7 @@ body {
 }
 
 .container--narrow {
-  max-width: 732px;
+  max-width: 90%;
 }
 
 .header-search-icon {
@@ -39,9 +39,9 @@ body {
   position: relative;
   top: -3px;
 }
-.fa-users{
+.fa-users,.awesome{
   margin-left:10px;
-  color: #28a745;
+  margin-right:10px;
 }
 
 .avatar-tiny {
@@ -116,6 +116,8 @@ body {
 @media (max-width: 768px) {
   .display-3 {
     font-size: 2.5rem;
+  }.nav-item{
+    padding:5px;
   }
 }
 
@@ -389,6 +391,7 @@ textarea.tall-textarea {
 .chat-log {
   padding: 8px;
   flex: 1;
+  word-break: break-word;
   overflow: auto;
 }
 

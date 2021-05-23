@@ -5,7 +5,7 @@ function NotFound() {
     return (
         <Page title="not found">
         <div className="text-center">
-            <h1>Wh😶😶ps there is an EROOR 4🤨4 !</h1>
+            <h1>Wh😶😶ps Page Not Found EROOR 4🤨4 !</h1>
             <p className="lead text-muted">&laquo;Back to <Link to="/">Home Page</Link></p>
         </div>
     </Page>

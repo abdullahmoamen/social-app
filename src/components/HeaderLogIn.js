@@ -10,7 +10,7 @@ function HeaderLogIn() {
 
   function handleLogout(){
     appDispatch({type:'logout'});
-    appDispatch({ type: "flashMessages", template: "primary", value: "You have successfully logged out. 👍" })
+    appDispatch({ type: "flashMessages", template: "primary", value: "You have successfully logged out. 👍" });
   }
 
   function handleSearch(e){
@@ -37,11 +37,11 @@ function HeaderLogIn() {
           <ReactTooltip place='bottom' id='my profile' className='custom-tooltip'/>
           
           {' '}<Link className="btn btn-sm btn-success mr-2" to="/create-post">{' '}
-            Create Post
+            Create Post <i className="fas fa-pen"></i>
           </Link>
           <Link to="/" onClick={handleLogout}
-          className="btn btn-sm btn-secondary">
-            Sign Out
+          className="btn btn-sm btn-danger">
+            Sign Out <i className="fas fa-sign-out-alt"></i>
           </Link>
         </div>
     )

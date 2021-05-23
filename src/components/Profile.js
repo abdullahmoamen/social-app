@@ -26,7 +26,6 @@ function Profile() {
 
   useEffect(() => {
     const ourRequest = Axios.CancelToken.source()
-
     async function fetchData() {
       try {
         const response = await Axios.post(`/profile/${username}`, { token: appState.user.token }, { cancelToken: ourRequest.token })
@@ -132,7 +131,7 @@ function Profile() {
         )}
         {appState.loggedIn && state.profileData.isFollowing && appState.user.username != state.profileData.profileUsername && state.profileData.profileUsername != "..." && (
           <button onClick={stopFollowing} disabled={state.followActionLoading} className="btn btn-danger btn-sm ml-2">
-            UnFollow <i className="fas fa-user-times"></i>
+            Un Follow <i className="fas fa-user-times"></i>
           </button>
         )}
       </h2>

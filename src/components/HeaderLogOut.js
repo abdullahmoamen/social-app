@@ -17,7 +17,7 @@ function HeaderLogOut() {
                 appDispatch({type: 'login' , data: response.data});
                 appDispatch({type: 'flashMessages',value:'Successfully Logged In ❤️'}); 
             }else{
-                appDispatch({ type: "flashMessages", template: "danger", value: "Incorrect username / password.🙄" })
+                appDispatch({ type: "flashMessages", template: "danger", value: "Incorrect username OR password.🙄" })
                 console.log('error!')
             }
         }catch(e){
@@ -40,7 +40,7 @@ function HeaderLogOut() {
                 name="username" 
                 onChange={e=>setUserName(e.target.value)}
                 className="form-control form-control-sm input-dark" 
-                type="text" placeholder="Username..." autoComplete="off" />
+                type="text" placeholder="Username..." autoComplete="username" />
             </div>
             <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
                 <input 
@@ -48,10 +48,10 @@ function HeaderLogOut() {
                 name="password" 
                 onChange={e=>setPassword(e.target.value)}
                 className="form-control form-control-sm input-dark" 
-                type="password" placeholder="Password..." />
+                type="password" placeholder="Password..." autoComplete="new-password"/>
             </div>
             <div className="col-md-auto">
-                <button className="btn btn-success btn-sm">Sign In</button>
+                <button className="btn btn-success btn-sm">Sign In <i className="fas fa-sign-in-alt"></i></button>
             </div>
             </div>
         </form>

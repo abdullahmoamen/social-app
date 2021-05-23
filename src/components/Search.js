@@ -24,7 +24,7 @@ useEffect(()=>{
       setState(draft=>{
         draft.requestCounter++
       })
-      },700)
+      },400)
       return()=> clearTimeout(delay)
   }else{
     setState(draft=>{

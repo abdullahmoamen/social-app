@@ -3,7 +3,7 @@ import useInput from '../hooks/use-input';
 const isNotEmpty = (value) => value.trim() !== '';
 const isEmail = (value) => value.includes('@');
 
-const BasicForm = (props) => {
+const BasicForm = () => {
   const {
     value: firstNameValue,
     isValid: firstNameIsValid,
@@ -60,7 +60,7 @@ const BasicForm = (props) => {
         <div className={firstNameClasses}>
           <label htmlFor='name'>First Name</label>
           <input
-            required
+
             type='text'
             id='name'
             value={firstNameValue}
@@ -72,7 +72,7 @@ const BasicForm = (props) => {
         <div className={lastNameClasses}>
           <label htmlFor='name'>Last Name</label>
           <input
-            required
+
             type='text'
             id='name'
             value={lastNameValue}
@@ -85,7 +85,6 @@ const BasicForm = (props) => {
       <div className={emailClasses}>
         <label htmlFor='name'>E-Mail Address</label>
         <input
-          required
           type='text'
           id='name'
           value={emailValue}

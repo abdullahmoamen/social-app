@@ -7,7 +7,7 @@ import DispatchContext from './../DispatchContext';
 
 
 function HomeGuest() {
-const appDispatch =useContext(DispatchContext)
+const appDispatch =useContext(DispatchContext);
   const initState= {
     username:{
       value:"",
@@ -83,7 +83,7 @@ const appDispatch =useContext(DispatchContext)
         break;
 
       case 'emailAfterDelay':
-        if(!/^\S+@\S+$/.test(draft.email.value)){
+        if(!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(draft.email.value)){
           draft.email.hasErrors=true;
           draft.email.message ='You must provide a valid email.🙄'
         }
@@ -178,7 +178,7 @@ const appDispatch =useContext(DispatchContext)
           try {
             const response = await Axios.post("/register", { username: state.username.value, email: state.email.value, password: state.password.value }, { cancelToken: ourReq.token })
             appDispatch({type: "login", data: response.data })
-            appDispatch({type:'flashMessages' , value:`Congrats!! Welcome to your new account 💙`})
+            appDispatch({type:'flashMessages' , value:`Congrats ${state.username.value} !! Welcome to your new account 💙`})
           } catch (error) {
               console.log('error !')
             }
@@ -214,14 +214,13 @@ const appDispatch =useContext(DispatchContext)
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username-register" className="text-muted mb-1">
-                <small>Username</small>
+                <small>Username:</small>
               </label>
               <input
-              // ref={inputRef}
-              required 
+              // ref={inputRef} 
               id="username-register" 
               onChange={e=> dispatch({type:'usernameImmediately',value:e.target.value})}
-              name="username" className="form-control" type="text" placeholder="Pick a username" autoComplete="off" />
+              name="username" className="form-control" type="text" placeholder="Pick a username" autoComplete="on" />
               <CSSTransition in={state.username.hasErrors} timeout={400} classNames={'liveValidateMessage'} unmountOnExit>
                 <div className="alert alert-danger small liveValidateMessage">
                   {state.username.message}
@@ -230,13 +229,13 @@ const appDispatch =useContext(DispatchContext)
             </div>
             <div className="form-group">
               <label htmlFor="email-register" className="text-muted mb-1">
-                <small>Email</small>
+                <small>Email:</small>
               </label>
-              <input
-              required 
+              <input 
               id="email-register" 
               onChange={e=> dispatch({type:'emailImmediately',value:e.target.value})}
-              name="email" className="form-control" type="email" placeholder="you@example.com" autoComplete="off" />
+              name="email" className="form-control" type="email" 
+              placeholder="you@example.com" autoComplete="on" />
               <CSSTransition in={state.email.hasErrors} timeout={400} classNames={'liveValidateMessage'} unmountOnExit>
                 <div className="alert alert-danger small liveValidateMessage">
                   {state.email.message}
@@ -248,17 +247,17 @@ const appDispatch =useContext(DispatchContext)
                 <small>Password</small>
               </label>
               <input 
-              required
               id="password-register" 
               onChange={e=> dispatch({type:'passwordImmediately',value:e.target.value})}
-              name="password" className="form-control" type="password" placeholder="Create a password" />
+              name="password" className="form-control" type="password" 
+              placeholder="Create a password" autoComplete='on'/>
               <CSSTransition in={state.password.hasErrors} timeout={500} classNames={'liveValidateMessage'} unmountOnExit>
                 <div className="alert alert-danger small liveValidateMessage">
                   {state.password.message}
                 </div>
               </CSSTransition>
             </div>
-            <button type="submit" className="py-3 mt-4 btn btn-lg btn-success btn-block">
+            <button type="submit" className="py-3 mt-4 btn btn-lg btn-primary btn-block">
               Sign up
             </button>
           </form>
